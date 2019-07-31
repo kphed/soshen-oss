@@ -1,0 +1,3 @@
+[submodule "project-icarus-backend-service"]
+	path = project-icarus-backend-service
+	url = https://github.com/kphed/project-icarus-backend-service

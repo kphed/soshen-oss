@@ -1,0 +1,54 @@
+{
+  "name": "soshen-dashboard",
+  "version": "1.0.0",
+  "description": "Mobile-friendly web application for managing Cardano blockchain projects",
+  "private": true,
+  "scripts": {
+    "dev": "webpack --mode development && webpack-dev-server --host 0.0.0.0 --hot --inline",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kphed/soshen.git"
+  },
+  "author": "SOSV, EMURGO, and Khoa Phan and Eko Mirhard",
+  "license": "Apache",
+  "bugs": {
+    "url": "https://github.com/kphed/soshen/issues"
+  },
+  "homepage": "https://github.com/kphed/soshen#readme",
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4",
+    "@material-ui/core": "^3.9.2",
+    "@material-ui/icons": "^3.0.2",
+    "@material-ui/system": "^3.0.0-alpha.2",
+    "axios": "^0.18.0",
+    "chart.js": "^2.8.0",
+    "lodash": "^4.17.11",
+    "moment": "^2.24.0",
+    "normalizr": "^3.3.0",
+    "prop-types": "^15.7.1",
+    "react": "^16.8.1",
+    "react-chartjs-2": "^2.7.6",
+    "react-dom": "^16.8.1",
+    "react-redux": "^6.0.0",
+    "react-router-dom": "^4.3.1",
+    "@hot-loader/react-dom": "^16.8.1",
+    "react-hot-loader": "^4.7.2",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^4.1.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1",
+    "clean-webpack-plugin": "^2.0.1",
+    "html-webpack-plugin": "^3.2.0"
+  }
+}

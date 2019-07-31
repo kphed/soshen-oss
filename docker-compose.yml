@@ -1,0 +1,61 @@
+version: "3.7"
+
+services:
+  # Stores project-related data (id, name, and blockchain)
+  database:
+    image: postgres:11.4-alpine
+    restart: on-failure
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres:/var/lib/postgresql/data
+
+  # Stores project stats-related data (API request endpoint, count, etc.)
+  redis:
+    image: redis:5.0.5-alpine
+    restart: on-failure
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis:/data
+
+  # Provides a user interface for creating, reading, updating, and deleting projects and visualizing their stats
+  dashboard:
+    build: ./dashboard
+    ports:
+      - "8100:8100"
+    depends_on:
+      - dashboard-api-server
+
+  # Handles requests from the dashboard application and reads/writes database (PostgreSQL) and cache (Redis) data
+  dashboard-api-server:
+    build: ./dashboard-api-server
+    environment:
+      - POSTGRES_HOST=database
+      - POSTGRES_USER=postgres
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    ports:
+      - "8200:8200"
+    depends_on:
+      - database
+      - redis
+
+  # Handles requests for interacting with a Cardano SL node, writes project stats data to cache, and reads from database
+  # to verify that only requests coming from projects in the dashboard application are forwarded to the Cardano SL node
+  node-api-server:
+    build: ./node-api-server
+    environment:
+      - POSTGRES_HOST=database
+      - POSTGRES_USER=postgres
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    ports:
+      - "8300:8300"
+    depends_on:
+      - database
+      - redis
+
+volumes:
+  postgres:
+  redis:
