@@ -24,7 +24,7 @@
     "@material-ui/system": "^3.0.0-alpha.2",
     "axios": "^0.18.0",
     "chart.js": "^2.8.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "moment": "^2.24.0",
     "normalizr": "^3.3.0",
     "prop-types": "^15.7.1",
